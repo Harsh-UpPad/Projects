@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Free Full-Stack App</title>
+    <title>On The Cloud's Projects</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,36 +42,9 @@
 <body>
 
     <div class="container">
-        <h1>Welcome to My Website</h1>
-        <p>This frontend HTML is successfully hosted on Vercel!</p>
-        
-        <!-- Button to trigger backend -->
-        <button id="fetch-btn">Call Backend API</button>
-        
-        <!-- Target to show backend data -->
-        <p id="backend-response">Click the button to test connection...</p>
+        <h1>Welcome to On The Cloud's Projects!</h1>
+        <a href="https://www.youtube.com/@Onthecloud-l4i">Link to my channel</a>
     </div>
-
-    <script>
-        document.getElementById('fetch-btn').addEventListener('click', async () => {
-            const responseText = document.getElementById('backend-response');
-            responseText.innerText = "Loading data from server...";
-
-            try {
-                // Calls the Flask API route we created earlier
-                const response = await fetch('/api/data');
-                const data = await response.json();
-                
-                // Displays the message from Flask
-                responseText.innerText = data.message;
-                responseText.style.color = "green";
-            } catch (error) {
-                responseText.innerText = "Error connecting to backend.";
-                responseText.style.color = "red";
-                console.error("Error:", error);
-            }
-        });
-    </script>
 
 </body>
 </html>
