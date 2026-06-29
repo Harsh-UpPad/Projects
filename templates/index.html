@@ -1,6 +1,77 @@
-<DOCTYPE! html>
-<html>
-   <head>
-     <title>h</title>
-   </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Free Full-Stack App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #0070f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #0051cb;
+        }
+        #backend-response {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to My Website</h1>
+        <p>This frontend HTML is successfully hosted on Vercel!</p>
+        
+        <!-- Button to trigger backend -->
+        <button id="fetch-btn">Call Backend API</button>
+        
+        <!-- Target to show backend data -->
+        <p id="backend-response">Click the button to test connection...</p>
+    </div>
+
+    <script>
+        document.getElementById('fetch-btn').addEventListener('click', async () => {
+            const responseText = document.getElementById('backend-response');
+            responseText.innerText = "Loading data from server...";
+
+            try {
+                // Calls the Flask API route we created earlier
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                
+                // Displays the message from Flask
+                responseText.innerText = data.message;
+                responseText.style.color = "green";
+            } catch (error) {
+                responseText.innerText = "Error connecting to backend.";
+                responseText.style.color = "red";
+                console.error("Error:", error);
+            }
+        });
+    </script>
+
+</body>
 </html>
