@@ -43,6 +43,10 @@
     </div>
 
     <div class="container">
+            <span>Sub count: <span id="subCount">Loading...</span></span>
+    </div>
+
+    <div class="container">
         <div class="g-ytsubscribe" 
          data-channel="Onthecloud-l4i" 
          data-layout="default" 
@@ -50,6 +54,25 @@
         </div>
     </div>
 
-    <script src="https://google.com"></script>
+    <script>
+        // Points directly to your custom Flask Scraper API path on Vercel
+        const proxyApiUrl = "/api/get-subs";
+
+        function getLiveCount() {
+            fetch(proxyApiUrl)
+                .then(res => res.json())
+                .then(data => {
+                    // Pulls the text string served straight from your Flask file
+                    document.getElementById('subCount').innerText = data.subscribers;
+                })
+                .catch(err => {
+                    console.error("Could not reach Flask Scraper API", err);
+                    document.getElementById('subCount').innerText = "Offline";
+                });
+        }
+
+        // Trigger the scraper when the user loads into the page
+        window.onload = getLiveCount;
+    </script>
 </body>
 </html>
