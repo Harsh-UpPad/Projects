@@ -58,12 +58,12 @@
                     if (responsePacket && responsePacket.subscribers) {
                         document.getElementById('subCount').innerText = responsePacket.subscribers;
                     } else {
-                        document.getElementById('subCount').innerText = "45+"; // Secure baseline catch
+                        document.getElementById('subCount').innerText = "7"; // Secure baseline catch
                     }
                 })
                 .catch(err => {
                     console.error("Could not reach Flask Scraper API", err);
-                    document.getElementById('subCount').innerText = "45+"; // Soft fallback to avoid crashing to Offline
+                    document.getElementById('subCount').innerText = "7"; // Soft fallback to avoid crashing to Offline
                 });
         }
 
